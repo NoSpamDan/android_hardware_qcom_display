@@ -260,7 +260,9 @@ int IonController::allocate(alloc_data& data, int usage)
     // we run out.
     if(!ionFlags) {
         ionFlags = ION_HEAP(ION_SF_HEAP_ID);
-#ifndef NO_IOMMU
+#ifdef NO_IOMMU
+        ionFlags |= ION_HEAP(ION_CP_MM_HEAP_ID);
+#else
         ionFlags |= ION_HEAP(ION_IOMMU_HEAP_ID);
 #endif
     }
