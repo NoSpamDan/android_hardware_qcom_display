@@ -424,44 +424,6 @@ typedef struct C2D_OBJECT_STR {
     struct C2D_OBJECT_STR *next; /* pointer to the next object or NULL */
 } C2D_OBJECT;
 
-/* Configuration bits, driver capabilities used by 2Dapplications */
-typedef enum {
-    C2D_DRIVER_SUPPORTS_GLOBAL_ALPHA_OP           = (1 << 0),
-    C2D_DRIVER_SUPPORTS_TILE_OP                   = (1 << 1),
-    C2D_DRIVER_SUPPORTS_COLOR_KEY_OP              = (1 << 2),
-    C2D_DRIVER_SUPPORTS_NO_PIXEL_ALPHA_OP         = (1 << 3),
-    C2D_DRIVER_SUPPORTS_TARGET_ROTATE_OP          = (1 << 4),
-    C2D_DRIVER_SUPPORTS_ANTI_ALIASING_OP          = (1 << 5), /* antialiasing */
-    C2D_DRIVER_SUPPORTS_BILINEAR_FILTER_OP        = (1 << 6),
-    C2D_DRIVER_SUPPORTS_LENS_CORRECTION_OP        = (1 << 7),
-    C2D_DRIVER_SUPPORTS_OVERRIDE_TARGET_ROTATE_OP = (1 << 8),
-    C2D_DRIVER_SUPPORTS_SHADER_BLOB_OP            = (1 << 9),
-    C2D_DRIVER_SUPPORTS_MASK_SURFACE_OP           = (1 << 10), /* mask surface */
-    C2D_DRIVER_SUPPORTS_MIRROR_H_OP               = (1 << 11), /* horizontal flip */
-    C2D_DRIVER_SUPPORTS_MIRROR_V_OP               = (1 << 12), /* vertical flip */
-    C2D_DRIVER_SUPPORTS_SCISSOR_RECT_OP           = (1 << 13),
-    C2D_DRIVER_SUPPORTS_SOURCE_RECT_OP            = (1 << 14),
-    C2D_DRIVER_SUPPORTS_TARGET_RECT_OP            = (1 << 15),
-    C2D_DRIVER_SUPPORTS_ROTATE_OP                 = (1 << 16), /* all rotations */
-    C2D_DRIVER_SUPPORTS_FLUSH_WITH_FENCE_FD_OP    = (1 << 17), /* all rotations */
-    C2D_DRIVER_SUPPORTS_ALL_CAPABILITIES_OP       = ((0xFFFFFFFF) >> (31 - 17)) /* mask for all capabilities supported */
-} C2D_DRIVER_CAPABILITIES;
-
-/* 2D driver workaround bits used by the 2D applications */
-typedef enum {
-    C2D_DRIVER_WORKAROUND_NONE  = 0, /* NO workaround */
-    C2D_DRIVER_WORKAROUND_SWAP_UV_FOR_YUV_TARGET  = (1 << 0), /* Swap UV when this flag set */
-} C2D_DRIVER_WORKAROUND;
-
-/* Structure to query Driver information */
-typedef struct {
-    uint32 capabilities_mask;
-    uint32 workaround_mask;
-    uint32 reserved1;
-    uint32 reserved2;
-    uint32 reserved3;
-} C2D_DRIVER_INFO;
-
 /* Structure to query Driver information */
 typedef struct {
     uint32          max_surface_template_needed;
