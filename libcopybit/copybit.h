@@ -238,6 +238,21 @@ struct copybit_device_t {
     */
   int (*finish)(struct copybit_device_t *dev);
 
+  /**
+    * Trigger the copybit draw operation(async).
+    *
+    * @param dev from open
+    *
+    * @param fd - gets the fencefd
+    *
+    * @return 0 if successful
+    */
+  int (*flush_get_fence)(struct copybit_device_t *dev, int* fd);
+
+  /* Clears the buffer
+   */
+  int (*clear)(struct copybit_device_t *dev, struct copybit_image_t const *buf,
+               struct copybit_rect_t *rect);
 };
 
 
